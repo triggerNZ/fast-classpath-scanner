@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>fast-classpath-scanner by lukehutch</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>fast-classpath-scanner</h1>
+        <h2>Uber-fast Java classpath scanner</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/lukehutch/fast-classpath-scanner/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/lukehutch/fast-classpath-scanner/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/lukehutch/fast-classpath-scanner" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="fast-classpath-scanner" class="anchor" href="#fast-classpath-scanner" aria-hidden="true"><span class="octicon octicon-link"></span></a>fast-classpath-scanner</h1>
+
+<p>Uber-fast, ultra-lightweight Java classpath scanner. Scans the classpath by parsing the classfile binary format directly rather than by using reflection. (Reflection causes the classloader to load each class, which can take an order of magnitude more time than parsing the classfile directly.)</p>
+
+<p>FastClasspathScanner is able to scan directories and jar/zip files on the classpath to:</p>
+
+<ul>
+<li>find classes that subclass a given class or one of its subclasses;</li>
+<li>find interfaces that extend a given interface or one of its subinterfaces;</li>
+<li>find classes that implement an interface or one of its subinterfaces, or whose superclasses implement the interface or one of its subinterfaces;</li>
+<li>find classes that have a given annotation;</li>
+<li>find the constant literal initializer value in a classfile's constant pool for a specified static final field;</li>
+<li>find files (even non-classfiles) anywhere on the classpath that have a path that matches a given regular expression;</li>
+<li>detect changes to the files within the classpath since the first time the classpath was scanned; and</li>
+<li>return a list of all directories and files on the classpath as a list of File objects, with the list deduplicated and filtered to include only classpath directories and files that actually exist (saving you the trouble of parsing and filtering the classpath).</li>
+</ul>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
