@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.github.lukehutch.fastclasspathscanner.outside.Outside;
+import io.github.lukehutch.fastclasspathscanner.whitelisted.*;
 import org.junit.Test;
 
 import io.github.lukehutch.fastclasspathscanner.matchprocessor.FileMatchContentsProcessor;
@@ -45,19 +47,6 @@ import io.github.lukehutch.fastclasspathscanner.matchprocessor.StaticFinalFieldM
 import io.github.lukehutch.fastclasspathscanner.matchprocessor.SubclassMatchProcessor;
 import io.github.lukehutch.fastclasspathscanner.matchprocessor.SubinterfaceMatchProcessor;
 import io.github.lukehutch.fastclasspathscanner.utils.HashClassfileContents;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Cls;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.ClsSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.ClsSubSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Iface;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.IfaceSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.IfaceSubSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl1;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl1Sub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl1SubSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl2;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl2Sub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.Impl2SubSub;
-import io.github.lukehutch.fastclasspathscanner.whitelisted.StaticField;
 import io.github.lukehutch.fastclasspathscanner.whitelisted.blacklisted.Blacklisted;
 
 public class FastClasspathScannerTest {
@@ -167,6 +156,8 @@ public class FastClasspathScannerTest {
         assertThat(scanner.getNamesOfClassesImplementing(Iface.class)).contains(Impl2SubSub.class.getName());
         assertThat(scanner.getNamesOfClassesImplementing(IfaceSub.class)).contains(Impl2SubSub.class.getName());
         assertThat(scanner.getNamesOfClassesImplementing(IfaceSubSub.class)).contains(Impl2SubSub.class.getName());
+
+        assertThat(scanner.getNamesOfClassesImplementing(Outside.class).contains(ImplementsOutside.class.getName()));
     }
 
     @Test
